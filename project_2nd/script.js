@@ -1,21 +1,19 @@
-const height = document.getElementById("height");
-const weight = document.getElementById("weight");
-const button = document.querySelector("button");
+const form = document.querySelector("form");
 
 // height = height / 100;
-if (height.value != null || weight.value != null) {
-  button.addEventListener("click", function (e) {
-    e.preventDefault();
 
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const height = document.getElementById("height").value / 100;
+  const weight = document.getElementById("weight").value;
+  if (height != "" || weight != "") {
     // console.log(height.value / 100);
     // console.log(weight.value);
 
-    let bmi = (weight.value / ((height.value * height.value) / 10000)).toFixed(
-      1
-    );
+    let bmi = (weight / (height * height)).toFixed(1);
 
     const result = document.getElementById("results");
 
     result.innerText = bmi;
-  });
-}
+  }
+});
